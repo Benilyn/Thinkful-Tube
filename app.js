@@ -1,4 +1,4 @@
-
+/*jshint esversion: 6 */
 
 var searchURL = 'https://www.googleapis.com/youtube/v3/search';
 
@@ -15,14 +15,17 @@ function displaySearch(data) {
 			var result = '';
 			if (data.items) {
 				data.items.forEach(function(searchResult){
-				result += '<p>' + searchResult.snippet.title + '</p>';
+					
+					
+				result += (`<li><img class="thumb" src="${searchResult.snippet.thumbnails.default.url}">
+					<span>${searchResult.snippet.title}</span></li>`);
 
 				});
 			}
 			else {
 				result += '<p>Search not Found</p>';
 			}
-			$('.js-search-results').html(result);	
+			$('#js-search-results').html(result);	
 		}
 
 $(document).ready(function(){
